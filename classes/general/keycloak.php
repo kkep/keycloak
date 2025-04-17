@@ -228,6 +228,7 @@ class CKeycloak
             $params['client_secret'] = $this->clientSecret;
         }
 
+        var_dump($url);
         return $this->postRequest($url, $params);
     }
 
