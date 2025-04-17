@@ -923,7 +923,7 @@ class CKeycloak
     {
         if (!check_bitrix_sessid()) {
 
-            var_dump($_REQUEST);
+            var_dump($_SERVER);
 
             $service = new static();
 
