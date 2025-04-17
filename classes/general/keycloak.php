@@ -720,7 +720,7 @@ class CKeycloak
             $this->openid = $this->getOpenIdConfiguration();
         }
 
-        return Arr::get($this->openid, $key);
+        return $this->openid[$key] ?? null;
     }
 
     /**
