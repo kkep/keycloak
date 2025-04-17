@@ -748,13 +748,10 @@ class CKeycloak
         $configuration = [];
 
         try {
-            $response = $this->getHttpClient()->get($url);
+            $request = $this->getHttpClient()->get($url);
 
-            var_dump($response);
-
-            if ($response->getStatusCode() === 200) {
-                $configuration = $response->getBody()->getContents();
-                $configuration = json_decode($configuration, true);
+            if ($request->getCode() === 200) {
+                return $request->getData(true);
             }
         } catch (\Throwable $e) {
             $this->logException($e);
