@@ -234,6 +234,8 @@ class CKeycloak
             if ($request->getCode() === 200) {
                 return $request->getData(true);
             }
+
+            var_dump($request->getCode(), $request->getBody());
         } catch (Throwable $e) {
             $this->logException($e);
 
