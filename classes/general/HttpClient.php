@@ -6,8 +6,12 @@ class HttpClient
 
     protected $response;
 
+    protected $headers;
+
     public function __construct()
     {
+        $this->headers = [];
+
         $this->ch = curl_init();
 
         curl_setopt_array($this->ch, [
@@ -39,7 +43,7 @@ class HttpClient
         curl_setopt($this->ch, CURLOPT_URL, $url);
 
         if (!empty($data)) {
-            if ($method == 'POST') {
+            if ($method == 'POST' && (empty($this->headers['Content-Type']) || $this->headers['Content-Type'] !== 'application/x-www-form-urlencoded')) {
                 curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data);
             } else {
                 curl_setopt($this->ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -63,9 +67,11 @@ class HttpClient
 
     public function setHeaders($headers = [])
     {
+        $this->headers = array_merge($this->headers, $headers);
+
         $values = [];
 
-        foreach ($headers as $key => $value) {
+        foreach ($this->headers as $key => $value) {
             $values[] = $key . ': ' . $value;
         }
 
