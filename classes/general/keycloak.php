@@ -922,8 +922,6 @@ class CKeycloak
     {
         if (!check_bitrix_sessid()) {
 
-            var_dump($_SERVER);
-
             $service = new static();
 
             if (str_starts_with($_SERVER['HTTP_REFERER'], $service->baseUrl)) {
