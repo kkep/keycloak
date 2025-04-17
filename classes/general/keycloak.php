@@ -931,14 +931,9 @@ class CKeycloak
 
     public static function onPageStart()
     {
-        global $USER;
-
-        var_dump($USER);
-
         if (!check_bitrix_sessid()) {
 
             $service = new static();
-
 
             if (!empty($_GET['state'])) {
                 // Check for errors from Keycloak
@@ -981,6 +976,13 @@ class CKeycloak
             header("Location: $url");
             exit;
         }
+    }
+
+    public static function onBeforeProlog()
+    {
+        global $USER;
+
+        var_dump($USER);
     }
 }
 

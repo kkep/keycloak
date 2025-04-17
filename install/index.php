@@ -63,6 +63,7 @@ class keycloak extends CModule
         global $APPLICATION;
         RegisterModule("keycloak");
         RegisterModuleDependences("main", "OnPageStart", "keycloak", "CKeycloak", "onPageStart", 100);
+        //RegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'CKeycloak', 'onBeforeProlog', 40);
 
         if (count($this->errors) > 0) {
             $APPLICATION->ThrowException(implode("<br>", $this->errors));
@@ -76,6 +77,7 @@ class keycloak extends CModule
     {
         COption::RemoveOption('keycloak');
 
+        //UnRegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'CKeycloak', 'onBeforeProlog');
         UnRegisterModuleDependences("main", "OnPageStart", "keycloak", "CKeycloak", "onPageStart");
         UnRegisterModule("keycloak");
 
