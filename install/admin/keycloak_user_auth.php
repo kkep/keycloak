@@ -1,0 +1,1 @@
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/keycloak/admin/keycloak_user_auth.php");?>
