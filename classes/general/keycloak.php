@@ -305,7 +305,6 @@ class CKeycloak
     {
         $httpClient = $this->getHttpClient();
 
-        // Validate JWT Token
         $token = new KeycloakAccessToken($this->retrieveToken());
 
         if (empty($token->getAccessToken())) {
