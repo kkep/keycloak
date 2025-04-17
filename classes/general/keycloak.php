@@ -921,7 +921,7 @@ class CKeycloak
 
     public static function onPageStart()
     {
-        if (!check_bitrix_sessid()) {
+        if (false && !check_bitrix_sessid()) {
             $service = new static();
             $url = $service->getLoginUrl();
             $service->saveState();
