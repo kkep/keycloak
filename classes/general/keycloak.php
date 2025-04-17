@@ -922,10 +922,13 @@ class CKeycloak
     public static function onPageStart()
     {
         if (!check_bitrix_sessid()) {
+
+            var_dump($_REQUEST);
+
             $service = new static();
 
             // Check for errors from Keycloak
-            if (! empty($_GET['error'])) {
+            if (!empty($_GET['error'])) {
                 $error = $_GET['error_description'];
                 $error = ($error) ?: $_GET['error'];
 
