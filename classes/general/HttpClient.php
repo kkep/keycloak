@@ -55,6 +55,17 @@ class HttpClient
         return $this;
     }
 
+    public function takeFormData($urlencoded = false)
+    {
+        if ($urlencoded) {
+            $this->setHeaders(['Content-type' => 'application/x-www-form-urlencoded']);
+        } else {
+            $this->setHeaders(['Content-type' => 'multipart/form-data']);
+        }
+
+        return $this;
+    }
+
     public function getBody()
     {
         return substr($this->response, $this->getHeaderSize());

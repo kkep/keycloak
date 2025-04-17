@@ -229,15 +229,11 @@ class CKeycloak
         }
 
         try {
-            var_dump($params);
-
-            $request = $this->getHttpClient()->setHeaders(['Content-Type' => 'application/x-www-form-urlencoded'])->post($url, $params);
+            $request = $this->getHttpClient()->takeFormData(true)->post($url, $params);
 
             if ($request->getCode() === 200) {
                 return $request->getData(true);
             }
-
-            var_dump($url, $request->getBody());
         } catch (Throwable $e) {
             $this->logException($e);
 
@@ -935,7 +931,9 @@ class CKeycloak
 
     public static function onPageStart()
     {
-        if (!check_bitrix_sessid()) {
+        global $USER;
+
+        if (false && !check_bitrix_sessid()) {
 
             $service = new static();
 
@@ -964,6 +962,8 @@ class CKeycloak
                     $token = $service->getAccessToken($code);
 
                     var_dump($token);
+
+                    $service->saveToken($token);
 
                     if (Auth::validate($token)) {
                         header("Location: /");
