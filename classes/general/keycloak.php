@@ -933,7 +933,9 @@ class CKeycloak
     {
         global $USER;
 
-        if (false && !check_bitrix_sessid()) {
+        var_dump($USER);
+
+        if (!check_bitrix_sessid()) {
 
             $service = new static();
 
