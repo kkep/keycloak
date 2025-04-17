@@ -924,7 +924,7 @@ class CKeycloak
 
             $service = new static();
 
-            if (!empty($_SERVER['HTTP_REFERER'])) {
+            if (!empty($_GET['state'])) {
                 var_dump($_SERVER);
             }
 
