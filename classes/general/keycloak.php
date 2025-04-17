@@ -922,9 +922,40 @@ class CKeycloak
     public static function onPageStart()
     {
         if (!check_bitrix_sessid()) {
-            var_dump($_GET);
-
             $service = new static();
+
+            // Check for errors from Keycloak
+            if (! empty($_GET['error'])) {
+                $error = $_GET['error_description'];
+                $error = ($error) ?: $_GET['error'];
+
+                throw new Exception($error);
+            }
+
+            // Check given state to mitigate CSRF attack
+            $state = $_GET['state'];
+            if (empty($state) || ! $service->validateState($state)) {
+                $service->forgetState();
+
+                throw new Exception('Invalid state');
+            }
+
+            // Change code for token
+            $code = $_GET['code'];
+
+            if (! empty($code)) {
+                $token = $service->getAccessToken($code);
+
+                var_dump($token);
+
+                if (Auth::validate($token)) {
+                    header("Location: /");
+                    exit();
+                }
+            }
+
+
+
             $url = $service->getLoginUrl();
             $service->saveState();
 
