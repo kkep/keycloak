@@ -11,8 +11,8 @@ class HttpClient
         $this->ch = curl_init();
 
         curl_setopt_array($this->ch, [
-            CURLOPT_HEADER => TRUE,
-            CURLOPT_RETURNTRANSFER => TRUE,
+            CURLOPT_HEADER => true,
+            CURLOPT_RETURNTRANSFER => true,
             CURLOPT_NOBODY => false,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_ENCODING => '',

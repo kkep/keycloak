@@ -229,6 +229,8 @@ class CKeycloak
         }
 
         try {
+            var_dump($params);
+
             $request = $this->getHttpClient()->setHeaders(['Content-Type' => 'multipart/form-data'])->post($url, $params);
 
             if ($request->getCode() === 200) {
