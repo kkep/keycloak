@@ -228,7 +228,19 @@ class CKeycloak
             $params['client_secret'] = $this->clientSecret;
         }
 
-        return $this->postRequest($url, $params);
+        try {
+            $request = $this->getHttpClient()->setHeaders(['Content-Type' => 'multipart/form-data'])->post($url, $params);
+
+            if ($request->getCode() === 200) {
+                return $request->getData(true);
+            }
+
+            var_dump($url, $request->getBody());
+        } catch (Throwable $e) {
+            $this->logException($e);
+
+            throw $e;
+        }
     }
 
     protected function postRequest($url, $params)
@@ -240,7 +252,6 @@ class CKeycloak
                 return $request->getData(true);
             }
 
-            var_dump($url, $request->getBody());
         } catch (Throwable $e) {
             $this->logException($e);
 
