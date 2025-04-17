@@ -924,6 +924,10 @@ class CKeycloak
 
             $service = new static();
 
+            if (!empty($_SERVER['HTTP_REFERER'])) {
+                var_dump($_SERVER);
+            }
+
             if (str_starts_with($_SERVER['HTTP_REFERER'], $service->baseUrl)) {
                 // Check for errors from Keycloak
                 if (!empty($_GET['error'])) {
