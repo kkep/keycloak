@@ -228,7 +228,6 @@ class CKeycloak
             $params['client_secret'] = $this->clientSecret;
         }
 
-        var_dump($url);
         return $this->postRequest($url, $params);
     }
 
@@ -240,6 +239,8 @@ class CKeycloak
             if ($request->getCode() === 200) {
                 return $request->getData(true);
             }
+
+            var_dump($url, $request->getBody());
         } catch (Throwable $e) {
             $this->logException($e);
 
