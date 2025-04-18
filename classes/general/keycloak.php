@@ -970,12 +970,15 @@ class CKeycloak
 
                     unset($dbUsers);
 
-                    var_dump($token);
+                    $USER = new CUser();
 
-                    if (Auth::validate($token)) {
-                        header("Location: /");
-                        exit();
-                    }
+                    $USER->Authorize(1);
+                    LocalRedirect("/");
+
+//                    if (Auth::validate($token)) {
+//                        header("Location: /");
+//                        exit();
+//                    }
                 }
             }
 
