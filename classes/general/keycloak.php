@@ -14,7 +14,7 @@ use \Bitrix\Main\Data\Cache;
  * @author Arsen Khayrullin
  */
 
-class CKeycloak
+class KeycloakWeb
 {
     /**
      * The Session key for token
