@@ -904,11 +904,6 @@ class KeycloakWeb
         }
     }
 
-    protected  function takePostRequest($url, $params = [])
-    {
-
-    }
-
     /**
      * Return a random state parameter for authorization
      *
