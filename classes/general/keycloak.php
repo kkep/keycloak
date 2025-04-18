@@ -229,7 +229,7 @@ class CKeycloak
         }
 
         try {
-            $request = $this->getHttpClient()->post($url, $params);
+            $request = $this->getHttpClient()->setHeaders(['Content-Type' => 'application/x-www-form-urlencoded'])->post($url, $params);
 
             if ($request->getCode() === 200) {
                 return $request->getData(true);
