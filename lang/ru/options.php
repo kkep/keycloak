@@ -19,6 +19,7 @@ $MESS["KEYCLOAK_WITHOUT_PREFIX"] = "Проверять авторизацию н
 $MESS["KEYCLOAK_DUPLICATE_LOGIN_USER"] = "Создавать пользователя, если пользователь с таким логином уже существует:";
 
 $MESS["KEYCLOAK_OPTIONS_NEW_USERS"] = "Создавать новых пользователей при первой успешной авторизации:";
+$MESS["KEYCLOAK_OPTIONS_UPDATE_USERS"] = "Обновлять данные при успешной авторизации:";
 $MESS['KEYCLOAK_OPTIONS_BASE_URL'] = 'Base URL';
 $MESS['KEYCLOAK_OPTIONS_REALM'] = 'Realm';
 $MESS['KEYCLOAK_OPTIONS_REALM_PUBLIC_KEY'] = 'Realm Public Key';
