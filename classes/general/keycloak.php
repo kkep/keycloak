@@ -962,11 +962,11 @@ class CKeycloak
 
                     $service->saveToken($token);
 
-                    $dbUsers = CUser::GetList('', '');
-                    echo "<pre>";
-                    while($arUser = $dbUsers->Fetch()) {
-                        print_r($arUser);
-                    }
+//                    $dbUsers = CUser::GetList('', '');
+//                    echo "<pre>";
+//                    while($arUser = $dbUsers->Fetch()) {
+//                        print_r($arUser);
+//                    }
 
                     unset($dbUsers);
 
