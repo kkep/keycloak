@@ -242,8 +242,6 @@ class KeycloakWeb
             $params['client_secret'] = $this->clientSecret;
         }
 
-        var_dump($url, $params);
-
         try {
             $request = $this->getHttpClient()->takeFormData(true)->post($url, $params);
 
@@ -1002,7 +1000,7 @@ class KeycloakWeb
         if (KeycloakWebGuard::instance()->guest() && KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
-            static::redirectToLogin();
+            //static::redirectToLogin();
         }
 
         //LocalRedirect("/");
