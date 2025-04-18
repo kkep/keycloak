@@ -64,7 +64,7 @@ class keycloak extends CModule
         RegisterModule("keycloak");
         RegisterModuleDependences("main", "OnPageStart", "keycloak", "KeycloakWeb", "onPageStart", 100);
         RegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'KeycloakWeb', 'onBeforeProlog', 40);
-        //RegisterModuleDependences('main', 'OnBeforeUserLogout', 'keycloak', 'KeycloakWeb', 'onBeforeUserLogout', 20);
+        RegisterModuleDependences('main', 'OnBeforeUserLogout', 'keycloak', 'KeycloakWeb', 'onBeforeUserLogout', 20);
 
         if (count($this->errors) > 0) {
             $APPLICATION->ThrowException(implode("<br>", $this->errors));
@@ -80,7 +80,7 @@ class keycloak extends CModule
 
         UnRegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'KeycloakWeb', 'onBeforeProlog');
         UnRegisterModuleDependences("main", "OnPageStart", "keycloak", "KeycloakWeb", "onPageStart");
-        //UnRegisterModuleDependences("main", "OnBeforeUserLogout", "keycloak", "KeycloakWeb", "onBeforeUserLogout");
+        UnRegisterModuleDependences("main", "OnBeforeUserLogout", "keycloak", "KeycloakWeb", "onBeforeUserLogout");
         UnRegisterModule("keycloak");
 
         return true;
