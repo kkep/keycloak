@@ -12,8 +12,6 @@
 // ]);
 
 CModule::AddAutoloadClasses('keycloak', [
-    // @deprecated
-    'CKeycloak' => 'classes/general/keycloak.php',
 
 
     'CKeycloakServer' => 'classes/general/keycloak_server.php',
