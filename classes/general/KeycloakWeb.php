@@ -242,6 +242,8 @@ class KeycloakWeb
             $params['client_secret'] = $this->clientSecret;
         }
 
+        var_dump($params);
+
         try {
             $request = $this->getHttpClient()->takeFormData(true)->post($url, $params);
 
