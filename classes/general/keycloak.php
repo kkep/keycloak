@@ -933,14 +933,6 @@ class CKeycloak
 
     public static function onPageStart()
     {
-        RegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'CKeycloak', 'onBeforeProlog', 40);
-
-        global $USER;
-
-        $USER = new CUser();
-
-        $USER->Authorize(1, true);
-
         return;
 
         if (!check_bitrix_sessid()) {
@@ -1004,6 +996,10 @@ class CKeycloak
     public static function onBeforeProlog()
     {
         global $USER;
+
+        $service = new static();
+
+        var_dump($service->retrieveToken());
 
         $USER->Authorize(1, true);
     }

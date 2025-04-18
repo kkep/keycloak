@@ -12,10 +12,16 @@
 // ]);
 
 CModule::AddAutoloadClasses('keycloak', [
+    // @deprecated
     'CKeycloak' => 'classes/general/keycloak.php',
+
+
     'CKeycloakServer' => 'classes/general/keycloak_server.php',
     '__CKeycloakServerDBResult' => 'classes/general/keycloak_server.php',
     'CKeycloakUtil' => 'classes/general/keycloak_util.php',
+
+
     'Session' => 'classes/general/Session.php',
     'HttpClient' => 'classes/general/HttpClient.php',
+    'KeycloakWeb' => 'classes/general/keycloak.php',
 ]);

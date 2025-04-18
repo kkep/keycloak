@@ -1,8 +1,5 @@
 <?php
 
-
-use Exception;
-
 class KeycloakAccessToken
 {
     /**
