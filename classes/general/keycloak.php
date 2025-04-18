@@ -933,6 +933,7 @@ class CKeycloak
 
     public static function onPageStart()
     {
+        return;
         if (!check_bitrix_sessid()) {
 
             $service = new static();
