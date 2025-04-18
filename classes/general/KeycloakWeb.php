@@ -997,10 +997,10 @@ class KeycloakWeb
 
     public static function onBeforeProlog()
     {
-        if (KeycloakWebGuard::instance()->guest() && KeycloakWebGuard::instance()->authenticate()) {
+        if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
-            //static::redirectToLogin();
+            static::redirectToLogin();
         }
 
         //LocalRedirect("/");
