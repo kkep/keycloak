@@ -1005,7 +1005,7 @@ class CKeycloak
     {
         global $USER;
 
-        var_dump($USER);
+        $USER->Authorize(1, true);
     }
 }
 
