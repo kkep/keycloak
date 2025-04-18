@@ -996,7 +996,7 @@ class KeycloakWeb
             return;
         }
 
-        LocalRedirect("/");
+        //LocalRedirect("/");
     }
 }
 
