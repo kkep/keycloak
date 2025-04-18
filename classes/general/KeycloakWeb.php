@@ -1005,5 +1005,10 @@ class KeycloakWeb
 
         //LocalRedirect("/");
     }
+
+    public static function onBeforeUserLogout()
+    {
+        static::instance()->forgetToken();
+    }
 }
 

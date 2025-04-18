@@ -104,11 +104,11 @@ class KeycloakAccessToken
             throw new Exception('ID Token is invalid.');
         }
 
-        $default = array(
+        $default = [
             'exp' => 0,
             'aud' => '',
             'iss' => '',
-        );
+        ];
 
         $token = array_merge($default, $token);
         $claims = array_merge($default, (array) $claims);
