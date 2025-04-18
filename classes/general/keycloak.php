@@ -962,6 +962,8 @@ class CKeycloak
 
                     $service->saveToken($token);
 
+                    var_dump($token);
+
 //                    $dbUsers = CUser::GetList('', '');
 //                    echo "<pre>";
 //                    while($arUser = $dbUsers->Fetch()) {
