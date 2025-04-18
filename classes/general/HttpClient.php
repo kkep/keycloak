@@ -58,9 +58,9 @@ class HttpClient
     public function takeFormData($urlencoded = false)
     {
         if ($urlencoded) {
-            $this->setHeaders(['Content-type' => 'application/x-www-form-urlencoded']);
+            $this->setHeaders(['Content-Type' => 'application/x-www-form-urlencoded']);
         } else {
-            $this->setHeaders(['Content-type' => 'multipart/form-data']);
+            $this->setHeaders(['Content-Type' => 'multipart/form-data']);
         }
 
         return $this;
