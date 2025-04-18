@@ -72,6 +72,8 @@ class KeycloakWebGuard
             return false;
         }
 
+        var_dump($user);
+
         // Provide User
         $user = $this->provider->retrieveByCredentials($user);
 
