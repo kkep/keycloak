@@ -99,7 +99,7 @@ class keycloak extends CModule
 
 	function DoUninstall()
 	{
-		global $APPLICATION, $step;
+		global $APPLICATION, $DOCUMENT_ROOT, $step;
 
 		$step = intval($step);
 
