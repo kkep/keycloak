@@ -30,7 +30,7 @@ if($MOD_RIGHT>="R"):
         Array("add_user_when_auth", Loc::getMessage("KEYCLOAK_OPTIONS_NEW_USERS"), "Y", Array("checkbox")),
     );
 
-    if($MOD_RIGHT>="W"):
+    if ($MOD_RIGHT>="W"):
 
         if ($REQUEST_METHOD=="GET" && $RestoreDefaults <> '' && check_bitrix_sessid())
         {

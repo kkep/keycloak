@@ -9,9 +9,13 @@ class KeycloakWebGuard
      */
     protected $user;
 
+
+    protected $provider;
+
     public function __construct(&$user)
     {
         $this->user = $user;
+        $this->provider = new KeycloakWebUserProvider();
     }
 
     /**
@@ -56,6 +60,7 @@ class KeycloakWebGuard
     {
         // Get Credentials
         $credentials = KeycloakWeb::retrieveToken();
+
         if (empty($credentials)) {
             return false;
         }
@@ -67,10 +72,37 @@ class KeycloakWebGuard
             return false;
         }
 
+        // Provide User
+        $user = $this->provider->retrieveByCredentials($user);
+
+
         $this->user->Authorize($user["ID"], true);
 
         return true;
     }
 
+    /**
+     * Validate a user's credentials.
+     *
+     * @param  array  $credentials
+     *
+     * @throws BadMethodCallException
+     *
+     * @return bool
+     */
+    public function validate(array $credentials = [])
+    {
+        if (empty($credentials['access_token']) || empty($credentials['id_token'])) {
+            return false;
+        }
+
+        /**
+         * Store the section
+         */
+        $credentials['refresh_token'] = $credentials['refresh_token'] ?? '';
+        KeycloakWeb::saveToken($credentials);
+
+        return $this->authenticate();
+    }
 
 }

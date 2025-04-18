@@ -403,20 +403,13 @@ class CKeycloak
                 'Accept' => 'application/json',
             ];
 
-            $httpClient = $this->getHttpClient();
+            $request = $this->getHttpClient()->setHeaders($headers)->post($url);
 
-            foreach ($headers as $key => $value) {
-                $httpClient->setHeader($key, $value, true);
-            }
-
-            $response = $httpClient->post($url, ['headers' => $headers]);
-
-            if ($response->getStatusCode() !== 200) {
+            if ($request->getCode() !== 200) {
                 throw new Exception('Was not able to get userinfo (not 200)');
             }
 
-            $user = $response->getBody()->getContents();
-            $user = json_decode($user, true);
+            $user = $request->getData(true);
 
             // Validate retrieved user is owner of token
             $token->validateSub($user['sub'] ?? '');
@@ -933,76 +926,68 @@ class CKeycloak
 
     public static function onPageStart()
     {
-        return;
-        if (!check_bitrix_sessid()) {
+        $service = new static();
 
-            $service = new static();
+        // проверяем на наличие токена
+        $token = $service->retrieveToken();
 
-            if (!empty($_GET['state'])) {
-                // Check for errors from Keycloak
-                if (!empty($_GET['error'])) {
-                    $error = $_GET['error_description'];
-                    $error = ($error) ?: $_GET['error'];
+        // если токена нет
+        if (empty($token)) {
+            // если есть "состояние"
+            if ($service->getState()) {
+                if (!empty($_GET['state'])) {
+                    // Check for errors from Keycloak
+                    if (!empty($_GET['error'])) {
+                        $error = $_GET['error_description'];
+                        $error = ($error) ?: $_GET['error'];
 
-                    throw new Exception($error);
+                        throw new Exception($error);
+                    }
+
+                    // Check given state to mitigate CSRF attack
+                    $state = $_GET['state'];
+
+                    if (empty($state) || ! $service->validateState($state)) {
+                        $service->forgetState();
+
+                        throw new Exception('Invalid state');
+                    }
+
+                    // Change code for token
+                    $code = $_GET['code'];
+
+                    if (! empty($code)) {
+                        $token = $service->getAccessToken($code);
+
+                        $service->saveToken($token);
+                    }
                 }
+            } else {
+                $url = $service->getLoginUrl();
+                $service->saveState();
 
-                // Check given state to mitigate CSRF attack
-                $state = $_GET['state'];
-                if (empty($state) || ! $service->validateState($state)) {
-                    $service->forgetState();
-
-                    throw new Exception('Invalid state');
-                }
-
-                // Change code for token
-                $code = $_GET['code'];
-
-                if (! empty($code)) {
-                    $token = $service->getAccessToken($code);
-
-                    $service->saveToken($token);
-
-                    var_dump($token);
-
-//                    $dbUsers = CUser::GetList('', '');
-//                    echo "<pre>";
-//                    while($arUser = $dbUsers->Fetch()) {
-//                        print_r($arUser);
-//                    }
-
-                    //unset($dbUsers);
-//
-//                    $USER = new CUser();
-//
-//                    $USER->Authorize(1, true);
-//                    LocalRedirect("/");
-
-//                    if (Auth::validate($token)) {
-//                        header("Location: /");
-//                        exit();
-//                    }
-                }
+                header("Location: $url");
             }
+        } else {
+            // токен есть, валидируем токен
+            $tokenIsValid = true;
 
-
-            $url = $service->getLoginUrl();
-            $service->saveState();
-
-            header("Location: $url");
-            exit;
+            if ($tokenIsValid) {
+                return;
+            } else {
+                // сбрасываем токен
+                $service->forgetToken();
+            }
         }
     }
 
     public static function onBeforeProlog()
     {
-        global $USER;
+        if (KeycloakWebGuard::instance()->guest() && KeycloakWebGuard::instance()->authenticate()) {
+            return;
+        }
 
-        $service = new static();
-
-        var_dump($service->retrieveToken());
-
-        $USER->Authorize(1, true);
+        LocalRedirect("/");
     }
 }
 
