@@ -963,6 +963,7 @@ class CKeycloak
                     $service->saveToken($token);
 
                     $dbUsers = CUser::GetList('', '');
+                    echo "<pre>";
                     while($arUser = $dbUsers->Fetch()) {
                         print_r($arUser);
                     }
