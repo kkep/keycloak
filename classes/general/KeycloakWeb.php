@@ -994,6 +994,8 @@ class KeycloakWeb
     {
         if (KeycloakWebGuard::instance()->guest() && KeycloakWebGuard::instance()->authenticate()) {
             return;
+        } else {
+            LocalRedirect(static::instance()->getLoginUrl());
         }
 
         //LocalRedirect("/");
