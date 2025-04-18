@@ -972,10 +972,7 @@ class KeycloakWeb
                     }
                 }
             } else {
-                $url = $service->getLoginUrl();
-                $service->saveState();
-
-                header("Location: $url");
+                static::redirectToLogin();
             }
         } else {
             // токен есть, валидируем токен
@@ -990,12 +987,20 @@ class KeycloakWeb
         }
     }
 
+    public static function redirectToLogin()
+    {
+        $url = static::instance()->getLoginUrl();
+        static::instance()->saveState();
+
+        header("Location: $url");
+    }
+
     public static function onBeforeProlog()
     {
         if (KeycloakWebGuard::instance()->guest() && KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
-            LocalRedirect(static::instance()->getLoginUrl());
+            static::redirectToLogin();
         }
 
         //LocalRedirect("/");
