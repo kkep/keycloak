@@ -933,6 +933,8 @@ class CKeycloak
 
     public static function onPageStart()
     {
+        RegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'CKeycloak', 'onBeforeProlog', 40);
+
         global $USER;
 
         $USER = new CUser();
