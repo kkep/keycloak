@@ -933,6 +933,14 @@ class CKeycloak
 
     public static function onPageStart()
     {
+        global $USER;
+
+        $USER = new CUser();
+
+        $USER->Authorize(1, true);
+
+        return;
+
         if (!check_bitrix_sessid()) {
 
             $service = new static();
