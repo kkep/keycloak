@@ -23,5 +23,6 @@ CModule::AddAutoloadClasses('keycloak', [
     'HttpClient' => 'classes/general/HttpClient.php',
     'KeycloakWeb' => 'classes/general/KeycloakWeb.php',
     'KeycloakWebGuard' => 'classes/general/KeycloakWebGuard.php',
+    'KeycloakAccessToken' => 'classes/general/KeycloakAccessToken.php',
     'KeycloakWebUserProvider' => 'classes/general/KeycloakWebUserProvider.php',
 ]);
