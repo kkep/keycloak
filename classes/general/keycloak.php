@@ -933,8 +933,6 @@ class CKeycloak
 
     public static function onPageStart()
     {
-        return;
-
         if (!check_bitrix_sessid()) {
 
             $service = new static();
@@ -970,12 +968,12 @@ class CKeycloak
 //                        print_r($arUser);
 //                    }
 
-                    unset($dbUsers);
-
-                    $USER = new CUser();
-
-                    $USER->Authorize(1, true);
-                    LocalRedirect("/");
+                    //unset($dbUsers);
+//
+//                    $USER = new CUser();
+//
+//                    $USER->Authorize(1, true);
+//                    LocalRedirect("/");
 
 //                    if (Auth::validate($token)) {
 //                        header("Location: /");
