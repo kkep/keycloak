@@ -972,7 +972,7 @@ class CKeycloak
 
                     $USER = new CUser();
 
-                    $USER->Authorize(1);
+                    $USER->Authorize(1, true);
                     LocalRedirect("/");
 
 //                    if (Auth::validate($token)) {
