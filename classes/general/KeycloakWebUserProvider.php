@@ -30,11 +30,9 @@ class KeycloakWebUserProvider
 
         unset($dbUsers);
 
-        var_dump($user);
-
         if (empty($user) && COption::GetOptionString("keycloak", "add_user_when_auth", "N") === "Y") {
             $user = new CUser();
-            $id = $user->Add($userData);
+            return ['ID' => $user->Add($userData)];
         } elseif (!empty($user) && COption::GetOptionString("keycloak", "update_user_when_auth", "Y") === "Y") {
             (new CUser())->Update($user['ID'], $userData);
         }
