@@ -100,6 +100,8 @@ class KeycloakWeb
 
     private $session;
 
+    private static $instance = null;
+
     /**
      * The Constructor
      * You can extend this service setting protected variables before call
@@ -145,6 +147,18 @@ class KeycloakWeb
 
         $this->httpClient = new \Bitrix\Main\Web\HttpClient();
 
+    }
+
+    /**
+     * @return static
+     */
+    public static function instance()
+    {
+        if (static::$instance === null) {
+            static::$instance = new KeycloakWeb();
+        }
+
+        return static::$instance;
     }
 
     /**

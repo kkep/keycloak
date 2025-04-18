@@ -59,15 +59,15 @@ class KeycloakWebGuard
     public function authenticate()
     {
         // Get Credentials
-        $credentials = KeycloakWeb::retrieveToken();
+        $credentials = KeycloakWeb::instance()->retrieveToken();
 
         if (empty($credentials)) {
             return false;
         }
 
-        $user = KeycloakWeb::getUserProfile($credentials);
+        $user = KeycloakWeb::instance()->getUserProfile($credentials);
         if (empty($user)) {
-            KeycloakWeb::forgetToken();
+            KeycloakWeb::instance()->forgetToken();
 
             return false;
         }
@@ -100,7 +100,7 @@ class KeycloakWebGuard
          * Store the section
          */
         $credentials['refresh_token'] = $credentials['refresh_token'] ?? '';
-        KeycloakWeb::saveToken($credentials);
+        KeycloakWeb::instance()->saveToken($credentials);
 
         return $this->authenticate();
     }
