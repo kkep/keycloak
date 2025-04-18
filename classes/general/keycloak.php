@@ -960,9 +960,16 @@ class CKeycloak
                 if (! empty($code)) {
                     $token = $service->getAccessToken($code);
 
-                    var_dump($token);
-
                     $service->saveToken($token);
+
+                    $dbUsers = CUser::GetList('', '');
+                    while($arUser = $dbUsers->Fetch()) {
+                        print_r($arUser);
+                    }
+
+                    unset($dbUsers);
+
+                    var_dump($token);
 
                     if (Auth::validate($token)) {
                         header("Location: /");
