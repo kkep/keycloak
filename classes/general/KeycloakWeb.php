@@ -935,7 +935,6 @@ class KeycloakWeb
 
     public static function onPageStart()
     {
-        return;
         $service = new static();
 
         // проверяем на наличие токена
@@ -990,7 +989,6 @@ class KeycloakWeb
 
     public static function redirectToLogin()
     {
-        return;
         $url = static::instance()->getLoginUrl();
         static::instance()->saveState();
 
@@ -999,7 +997,6 @@ class KeycloakWeb
 
     public static function onBeforeProlog()
     {
-        return;
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
