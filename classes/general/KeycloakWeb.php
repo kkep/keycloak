@@ -944,7 +944,7 @@ class KeycloakWeb
 
     public static function onPageStart()
     {
-        if (false && COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
+        if (true || COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
             return;
         }
 
@@ -1002,7 +1002,7 @@ class KeycloakWeb
 
     public static function onBeforeProlog()
     {
-        if (false && COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
+        if (true || COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
             return;
         }
 
@@ -1017,7 +1017,7 @@ class KeycloakWeb
 
     public static function onAfterUserLogout($arParams)
     {
-        if (false && COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
+        if (true || COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
             return;
         }
 
