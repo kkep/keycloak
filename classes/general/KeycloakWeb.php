@@ -1010,7 +1010,7 @@ class KeycloakWeb
         //LocalRedirect("/");
     }
 
-    public static function onBeforeUserLogout($arParams)
+    public static function onAfterUserLogout($arParams)
     {
         if (COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
             return;
@@ -1020,10 +1020,8 @@ class KeycloakWeb
             global $USER;
             $logoutUrl = static::instance()->getLogoutUrl();
             static::instance()->forgetToken();
-            $USER->Logout();
             header("Location: $logoutUrl");
         }
-
     }
 }
 
