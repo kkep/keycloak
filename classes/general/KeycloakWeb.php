@@ -606,6 +606,7 @@ class KeycloakWeb
     public function validateState($state)
     {
         $challenge = $this->session->get(self::KEYCLOAK_SESSION_STATE);
+        var_dump($challenge);
         return (
             !empty($state)
             && !empty($challenge)
@@ -956,7 +957,7 @@ class KeycloakWeb
                     // Check given state to mitigate CSRF attack
                     $state = $_GET['state'];
 
-                    if (empty($state) || ! $service->validateState($state)) {
+                    if (!$service->validateState($state)) {
                         $service->forgetState();
 
                         throw new Exception('Invalid state');
