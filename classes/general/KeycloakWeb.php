@@ -1022,18 +1022,19 @@ class KeycloakWeb
         }
 
         if ($arParams['SUCCESS']) {
-//            $logoutUrl = static::instance()->getLogoutUrl();
-//            static::instance()->forgetToken();
-//            header("Location: $logoutUrl");
+            $logoutUrl = static::instance()->getLogoutUrl();
+            static::instance()->forgetToken();
+            header("Location: $logoutUrl");
+            exit();
         }
     }
 
     public static function onBeforeUserLogout()
     {
-        $logoutUrl = static::instance()->getLogoutUrl();
-        static::instance()->forgetToken();
-        header("Location: $logoutUrl");
-        exit();
+//        $logoutUrl = static::instance()->getLogoutUrl();
+//        static::instance()->forgetToken();
+//        header("Location: $logoutUrl");
+//        exit();
     }
 }
 
