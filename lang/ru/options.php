@@ -18,6 +18,7 @@ $MESS["KEYCLOAK_WRONG_NET_MASK"] = "Адрес и маска подсети дл
 $MESS["KEYCLOAK_WITHOUT_PREFIX"] = "Проверять авторизацию на всех доступных ldap серверах, если в логине не указан префикс:";
 $MESS["KEYCLOAK_DUPLICATE_LOGIN_USER"] = "Создавать пользователя, если пользователь с таким логином уже существует:";
 
+$MESS["KEYCLOAK_OPTIONS_ENABLED"] = "Авторизация по Keycloak включена:";
 $MESS["KEYCLOAK_OPTIONS_NEW_USERS"] = "Создавать новых пользователей при первой успешной авторизации:";
 $MESS["KEYCLOAK_OPTIONS_UPDATE_USERS"] = "Обновлять данные при успешной авторизации:";
 $MESS['KEYCLOAK_OPTIONS_BASE_URL'] = 'Base URL';

@@ -128,11 +128,11 @@ class KeycloakWeb
         }
 
         if (is_null($this->cacheOpenid)) {
-            $this->cacheOpenid = COption::GetOptionString('keycloak', 'cache_openid', false);
+            $this->cacheOpenid = COption::GetOptionString('keycloak', 'cache_openid', 'N');
         }
 
         if (is_null($this->callbackUrl)) {
-            $this->callbackUrl = COption::GetOptionString('keycloak', 'redirect_url', false);
+            $this->callbackUrl = COption::GetOptionString('keycloak', 'redirect_url', 'N');
         }
 
         if (is_null($this->redirectLogout)) {
@@ -997,6 +997,10 @@ class KeycloakWeb
 
     public static function onBeforeProlog()
     {
+        if (COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
+            return;
+        }
+
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
@@ -1008,6 +1012,10 @@ class KeycloakWeb
 
     public static function onBeforeUserLogout($arParams)
     {
+        if (COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
+            return;
+        }
+
         if ($arParams['SUCCESS']) {
             global $USER;
             $logoutUrl = static::instance()->getLogoutUrl();

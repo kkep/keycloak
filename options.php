@@ -19,7 +19,7 @@ if ($MOD_RIGHT >= "R"):
 
     // set up form
     $arAllOptions =	[
-        ["base_url", Loc::getMessage('KEYCLOAK_OPTIONS_BASE_URL'), "http://localhost:8080", ["text"]],
+        ["enabled", Loc::getMessage("KEYCLOAK_OPTIONS_ENABLED"), "N", ["checkbox"]],
         ["realm", Loc::getMessage('KEYCLOAK_OPTIONS_REALM'), "alabuga", ["text"]],
         ["realm_public_key", Loc::getMessage('KEYCLOAK_OPTIONS_REALM_PUBLIC_KEY'), "", ["text"]],
         ["client_id", Loc::getMessage('KEYCLOAK_OPTIONS_CLIENT_ID'), "bitrix", ["text"]],
