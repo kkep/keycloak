@@ -38,7 +38,7 @@ class KeycloakWebGuard
      */
     public function check()
     {
-        return $this->user->IsAuthorized();
+        return $this->user->IsAuthorized() && $this->checkCredentials();
     }
 
     /**
@@ -51,12 +51,7 @@ class KeycloakWebGuard
         return !$this->check();
     }
 
-    /**
-     * Try to authenticate the user
-     *
-     * @return boolean
-     */
-    public function authenticate()
+    public function checkCredentials()
     {
         // Get Credentials
         $credentials = KeycloakWeb::instance()->retrieveToken();
@@ -69,6 +64,20 @@ class KeycloakWebGuard
         if (empty($user)) {
             KeycloakWeb::instance()->forgetToken();
 
+            return false;
+        }
+        return $user;
+    }
+
+    /**
+     * Try to authenticate the user
+     *
+     * @return boolean
+     */
+    public function authenticate()
+    {
+        $user = $this->checkCredentials();
+        if ($user === false) {
             return false;
         }
 
