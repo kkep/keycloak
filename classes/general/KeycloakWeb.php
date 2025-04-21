@@ -934,6 +934,14 @@ class KeycloakWeb
         return new HttpClient();
     }
 
+    public static function redirectToLogin()
+    {
+        $url = static::instance()->getLoginUrl();
+        static::instance()->saveState();
+
+        header("Location: $url");
+    }
+
     public static function onPageStart()
     {
         if (COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
@@ -990,14 +998,6 @@ class KeycloakWeb
                 $service->forgetToken();
             }
         }
-    }
-
-    public static function redirectToLogin()
-    {
-        $url = static::instance()->getLoginUrl();
-        static::instance()->saveState();
-
-        header("Location: $url");
     }
 
     public static function onBeforeProlog()
