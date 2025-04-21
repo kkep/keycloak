@@ -606,7 +606,7 @@ class KeycloakWeb
     public function validateState($state)
     {
         $challenge = $this->session->get(self::KEYCLOAK_SESSION_STATE);
-        var_dump($challenge);
+        print_r($challenge . ' + ' . $state);
         return (
             !empty($state)
             && !empty($challenge)
