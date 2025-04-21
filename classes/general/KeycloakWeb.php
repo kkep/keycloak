@@ -779,7 +779,7 @@ class KeycloakWeb
         }
 
         // Save cache
-        if ($this->cacheOpenid) {
+        if ($this->cacheOpenid === 'Y') {
             $this->cache->set($cacheKey, $configuration);
         }
 
