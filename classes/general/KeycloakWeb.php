@@ -1023,7 +1023,7 @@ class KeycloakWeb
 
         $logoutUrl = static::instance()->getLogoutUrl();
 
-        var_dump($logoutUrl);
+        var_dump($arParams);
         exit();
 
         if ($arParams['SUCCESS']) {
