@@ -936,6 +936,10 @@ class KeycloakWeb
 
     public static function onPageStart()
     {
+        if (COption::GetOptionString('keycloak', 'enabled', 'N') === 'N') {
+            return;
+        }
+
         $service = new static();
 
         // проверяем на наличие токена
@@ -1018,7 +1022,6 @@ class KeycloakWeb
         }
 
         if ($arParams['SUCCESS']) {
-            global $USER;
             $logoutUrl = static::instance()->getLogoutUrl();
             static::instance()->forgetToken();
             header("Location: $logoutUrl");
