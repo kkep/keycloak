@@ -1022,8 +1022,10 @@ class KeycloakWeb
         }
 
         if ($arParams['SUCCESS']) {
+            global $USER;
             $logoutUrl = static::instance()->getLogoutUrl();
             static::instance()->forgetToken();
+            $USER->Logout();
             header("Location: $logoutUrl");
         }
     }
