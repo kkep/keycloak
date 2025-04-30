@@ -125,7 +125,7 @@ class KeycloakWeb
         }
 
         if (is_null($this->callbackUrl)) {
-            var_dump($_REQUEST);
+            var_dump($_SERVER);
             $this->callbackUrl = COption::GetOptionString('keycloak', 'redirect_url', 'N');
         }
 
