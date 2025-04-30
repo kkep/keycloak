@@ -62,10 +62,10 @@ class keycloak extends CModule
     {
         global $APPLICATION;
         RegisterModule("keycloak");
-        RegisterModuleDependences("main", "OnPageStart", "keycloak", "KeycloakWeb", "onPageStart", 100);
-        RegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'KeycloakWeb', 'onBeforeProlog', 40);
-        RegisterModuleDependences('main', 'OnAfterUserLogout', 'keycloak', 'KeycloakWeb', 'onAfterUserLogout', 10);
-        RegisterModuleDependences('main', 'OnBeforeUserLogout', 'keycloak', 'KeycloakWeb', 'onBeforeUserLogout', 20);
+        RegisterModuleDependences("main", "OnPageStart", "keycloak", "KeycloakHandler", "onPageStart", 100);
+        RegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'KeycloakHandler', 'onBeforeProlog', 40);
+        RegisterModuleDependences('main', 'OnAfterUserLogout', 'keycloak', 'KeycloakHandler', 'onAfterUserLogout', 10);
+        RegisterModuleDependences('main', 'OnBeforeUserLogout', 'keycloak', 'KeycloakHandler', 'onBeforeUserLogout', 20);
 
         if (count($this->errors) > 0) {
             $APPLICATION->ThrowException(implode("<br>", $this->errors));
@@ -79,10 +79,10 @@ class keycloak extends CModule
     {
         COption::RemoveOption('keycloak');
 
-        UnRegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'KeycloakWeb', 'onBeforeProlog');
-        UnRegisterModuleDependences("main", "OnPageStart", "keycloak", "KeycloakWeb", "onPageStart");
-        UnRegisterModuleDependences("main", "OnAfterUserLogout", "keycloak", "KeycloakWeb", "onAfterUserLogout");
-        UnRegisterModuleDependences("main", "OnBeforeUserLogout", "keycloak", "KeycloakWeb", "onBeforeUserLogout");
+        UnRegisterModuleDependences('main', 'OnBeforeProlog', 'keycloak', 'KeycloakHandler', 'onBeforeProlog');
+        UnRegisterModuleDependences("main", "OnPageStart", "keycloak", "KeycloakHandler", "onPageStart");
+        UnRegisterModuleDependences("main", "OnAfterUserLogout", "keycloak", "KeycloakHandler", "onAfterUserLogout");
+        UnRegisterModuleDependences("main", "OnBeforeUserLogout", "keycloak", "KeycloakHandler", "onBeforeUserLogout");
         UnRegisterModule("keycloak");
 
         return true;
