@@ -20,14 +20,14 @@ if ($MOD_RIGHT >= "R"):
     // set up form
     $arAllOptions =	[
         ["enabled", Loc::getMessage("KEYCLOAK_OPTIONS_ENABLED"), "N", ["checkbox"]],
-        ["base_url", Loc::getMessage('KEYCLOAK_OPTIONS_BASE_URL'), "http://localhost:8080", ["text"]],
+        ["base_url", Loc::getMessage('KEYCLOAK_OPTIONS_BASE_URL'), "https://localhost", ["text"]],
         ["realm", Loc::getMessage('KEYCLOAK_OPTIONS_REALM'), "alabuga", ["text"]],
         ["realm_public_key", Loc::getMessage('KEYCLOAK_OPTIONS_REALM_PUBLIC_KEY'), "", ["text"]],
         ["client_id", Loc::getMessage('KEYCLOAK_OPTIONS_CLIENT_ID'), "bitrix", ["text"]],
         ["client_secret", Loc::getMessage('KEYCLOAK_OPTIONS_CLIENT_SECRET'), "", ["text"]],
         ["redirect_url", Loc::getMessage('KEYCLOAK_OPTIONS_REDIRECT_URI'), "", ["text"]],
         ["cache_openid", Loc::getMessage('KEYCLOAK_OPTIONS_CACHE_OPENID'), "N", ["checkbox"]],
-        ["redirect_logout", Loc::getMessage('KEYCLOAK_OPTIONS_REDIRECT_LOGOUT'), "no@email", ["text"]],
+        ["redirect_logout", Loc::getMessage('KEYCLOAK_OPTIONS_REDIRECT_LOGOUT'), "https://localhost/", ["text"]],
         ["add_user_when_auth", Loc::getMessage("KEYCLOAK_OPTIONS_NEW_USERS"), "N", ["checkbox"]],
         ["update_user_when_auth", Loc::getMessage("KEYCLOAK_OPTIONS_UPDATE_USERS"), "N", ["checkbox"]],
     ];
