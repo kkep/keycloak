@@ -125,7 +125,7 @@ class KeycloakWeb
         }
 
         if (is_null($this->callbackUrl)) {
-            $this->callbackUrl = 'https://' . $_SERVER['HTTP_HOST'] . '/' . $_SERVER['REQUEST_URI']; // COption::GetOptionString('keycloak', 'redirect_url', 'N');
+            $this->callbackUrl = COption::GetOptionString('keycloak', 'redirect_url');
         }
 
         if (is_null($this->redirectLogout)) {
