@@ -48,6 +48,7 @@ class KeycloakHandler
                     $service->saveToken($token);
                 }
             } else {
+                var_dump('exit');
                 KeycloakWeb::redirectToLogin();
             }
         } else {
