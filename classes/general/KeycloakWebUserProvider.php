@@ -27,8 +27,6 @@ class KeycloakWebUserProvider
 
         $user = CUser::GetByLogin($userData['LOGIN'])->Fetch();
 
-        var_dump($user);
-
         if (empty($user) || $user['ACTIVE'] !== 'Y') {
             return null;
         }
