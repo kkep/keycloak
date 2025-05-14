@@ -597,6 +597,8 @@ class KeycloakWeb
         $url = $this->baseUrl . '/realms/' . $this->realm;
         $url = $url . '/.well-known/openid-configuration';
 
+        var_dump($url);
+
         $configuration = [];
 
         try {
