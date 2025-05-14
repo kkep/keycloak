@@ -28,7 +28,7 @@ class KeycloakWebUserProvider
         $dbUsers = CUser::GetList('', '', ['LOGIN' => $userData['LOGIN']]);
         $user = $dbUsers->Fetch();
 
-        var_dump($dbUsers);
+        var_dump($userData, $dbUsers);
 
         unset($dbUsers);
 
