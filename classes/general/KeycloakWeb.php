@@ -225,7 +225,7 @@ class KeycloakWeb
             'code' => $code,
             'client_id' => $this->getClientId(),
             'grant_type' => 'authorization_code',
-            'redirect_uri' => 'https://b.lkds.alabuga.ru',
+            'redirect_uri' => 'https://b.lkds.alabuga.ru/',
         ];
 
         if (!empty($this->clientSecret)) {
