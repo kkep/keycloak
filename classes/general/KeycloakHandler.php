@@ -21,7 +21,7 @@ class KeycloakHandler
         // если токена нет
         if (empty($token)) {
             // если есть "состояние"
-            if ($service->getState() && !empty($_GET['state'])) {
+            if (!empty($_GET['state'])) {
                 // Check for errors from Keycloak
                 if (!empty($_GET['error'])) {
                     $error = $_GET['error_description'];

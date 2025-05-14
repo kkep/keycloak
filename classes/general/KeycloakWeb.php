@@ -136,9 +136,7 @@ class KeycloakWeb
 
         $this->session = new Session();
 
-        $state = $this->session->get(self::KEYCLOAK_SESSION_STATE);
-
-        $this->state = empty($state) ? $this->generateRandomState() : $state;
+        $this->state = $this->generateRandomState();
     }
 
     /**
