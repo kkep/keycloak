@@ -32,6 +32,7 @@ class KeycloakHandler
 
                 // Check given state to mitigate CSRF attack
                 $state = $_GET['state'];
+                var_dump($state, $service->getState());
 
                 if (!$service->validateState($state)) {
                     $service->forgetState();
