@@ -44,11 +44,10 @@ class KeycloakHandler
 
                 if (! empty($code)) {
                     $token = $service->getAccessToken($code);
-
+                    var_dump($token);
                     $service->saveToken($token);
                 }
             } else {
-                var_dump('exit');
                 KeycloakWeb::redirectToLogin();
             }
         } else {
