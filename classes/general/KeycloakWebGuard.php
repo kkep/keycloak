@@ -89,7 +89,7 @@ class KeycloakWebGuard
             exit();
         }
 
-        var_dump($user);
+        var_dump($user["ID"]);
 
         $this->user->Authorize($user["ID"], true);
 
