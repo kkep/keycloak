@@ -479,7 +479,7 @@ class KeycloakWeb
      */
     public function saveState()
     {
-        print_r($this->state);
+        echo $this->state;
         $this->session->put(self::KEYCLOAK_SESSION_STATE, $this->state);
         $this->session->save();
     }
