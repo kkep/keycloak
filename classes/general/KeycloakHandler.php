@@ -6,7 +6,7 @@ class KeycloakHandler
 {
     protected static function isEnabled()
     {
-        return COption::GetOptionString('keycloak', 'enabled', 'N') === 'Y';
+        return false && COption::GetOptionString('keycloak', 'enabled', 'N') === 'Y';
     }
 
     public static function onPageStart()
