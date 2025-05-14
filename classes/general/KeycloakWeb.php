@@ -604,6 +604,7 @@ class KeycloakWeb
 
             if ($request->getCode() === 200) {
                 $configuration = $request->getData(true);
+                var_dump($configuration);
             }
         } catch (\Throwable $e) {
             $this->logException($e);
