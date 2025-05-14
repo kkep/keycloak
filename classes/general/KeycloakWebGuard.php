@@ -84,6 +84,8 @@ class KeycloakWebGuard
         // Provide User
         $user = $this->provider->retrieveByCredentials($user);
 
+        var_dump($user);
+
         $this->user->Authorize($user["ID"], true);
 
         return true;
