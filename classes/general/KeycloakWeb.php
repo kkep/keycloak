@@ -225,7 +225,7 @@ class KeycloakWeb
             'code' => $code,
             'client_id' => $this->getClientId(),
             'grant_type' => 'authorization_code',
-            'redirect_uri' => $this->callbackUrl,
+            'redirect_uri' => 'https://b.lkds.alabuga.ru',
         ];
 
         if (!empty($this->clientSecret)) {
@@ -234,11 +234,12 @@ class KeycloakWeb
 
         try {
             $request = $this->getHttpClient()->takeFormData(true)->post($url, $params);
-            var_dump($request->getBody());
 
             if ($request->getCode() === 200) {
                 return $request->getData(true);
             }
+
+            throw new Exception('Не удалось получить токен');
         } catch (Throwable $e) {
             $this->logException($e);
 
