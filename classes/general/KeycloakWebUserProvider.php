@@ -34,10 +34,6 @@ class KeycloakWebUserProvider
             (new CUser())->Update($user['ID'], $userData);
         }
 
-//        $user = $this->eloquent->retrieveByCredentials([
-//            'keycloak_id' => $userData[config('keycloak-web.keycloak_id_column')]
-//        ]);
-
         return $user;
     }
 

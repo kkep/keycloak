@@ -44,6 +44,7 @@ class KeycloakHandler
 
                 if (! empty($code)) {
                     $token = $service->getAccessToken($code);
+
                     $service->saveToken($token);
                 }
             } else {
@@ -63,12 +64,6 @@ class KeycloakHandler
     public static function onBeforeProlog()
     {
         if (!static::isEnabled()) return;
-//
-//        global $USER;
-//
-//        $USER->Authorize(1, true);
-
-//        return;
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
