@@ -608,7 +608,7 @@ class KeycloakWeb
         $cacheKey = 'keycloak_web_guard_openid-' . $this->realm . '-' . md5($this->baseUrl);
 
         // From cache?
-        if ($this->cacheOpenid == 'Y') {
+        if ($this->cacheOpenid === 'Y') {
             $configuration = $this->cache->get($cacheKey, []);
 
             if (!empty($configuration)) {
@@ -626,7 +626,7 @@ class KeycloakWeb
             $request = $this->getHttpClient()->get($url);
 
             if ($request->getCode() === 200) {
-                return $request->getData(true);
+                $configuration = $request->getData(true);
             }
         } catch (\Throwable $e) {
             $this->logException($e);
