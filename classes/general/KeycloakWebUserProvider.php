@@ -30,6 +30,8 @@ class KeycloakWebUserProvider
 
         var_dump($userData, $dbUsers);
 
+        exit;
+
         unset($dbUsers);
 
         if (empty($user) && COption::GetOptionString("keycloak", "add_user_when_auth", "N") === "Y") {
