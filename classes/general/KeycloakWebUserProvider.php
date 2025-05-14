@@ -12,10 +12,10 @@ class KeycloakWebUserProvider
         //$syncAttributes = config('keycloak-web.sync_attributes');
 
         $syncAttributes = [
-            'LOGIN' => '',
+            'LOGIN' => 'username',
             'NAME' => '',
             'LAST_NAME' => '',
-            'EMAIL' => '',
+            'EMAIL' => 'email',
         ];
 
         $userData = [];
@@ -27,7 +27,7 @@ class KeycloakWebUserProvider
 
         $user = CUser::GetByLogin($userData['LOGIN'])->Fetch();
 
-        var_dump($credentials);
+        var_dump($user);
 
         if (empty($user) || $user['ACTIVE'] !== 'Y') {
             return null;
