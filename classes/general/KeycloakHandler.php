@@ -63,12 +63,12 @@ class KeycloakHandler
     public static function onBeforeProlog()
     {
         if (!static::isEnabled()) return;
+//
+//        global $USER;
+//
+//        $USER->Authorize(1, true);
 
-        global $USER;
-
-        $USER->Authorize(1, true);
-
-        return;
+//        return;
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
