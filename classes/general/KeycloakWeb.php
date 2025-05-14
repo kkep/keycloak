@@ -541,29 +541,6 @@ class KeycloakWeb
     }
 
     /**
-     * Преобразует массив в строку запроса URL
-     *
-     * @param array $array Массив параметров
-     * @return string Строка запроса
-     */
-    function array_to_query(array $array): string
-    {
-        $parts = [];
-
-        foreach ($array as $key => $value) {
-            if (is_array($value)) {
-                foreach ($value as $item) {
-                    $parts[] = urlencode($key) . '[]=' . urlencode($item);
-                }
-            } else {
-                $parts[] = urlencode($key) . '=' . urlencode($value);
-            }
-        }
-
-        return implode('&', $parts);
-    }
-
-    /**
      * Return the client id for requests
      *
      * @return string
@@ -771,7 +748,6 @@ class KeycloakWeb
     public static function redirectToLogin()
     {
         $url = static::instance()->getLoginUrl();
-        var_dump($url);
         static::instance()->saveState();
 
         header("Location: $url");
