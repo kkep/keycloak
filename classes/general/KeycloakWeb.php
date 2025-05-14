@@ -234,7 +234,7 @@ class KeycloakWeb
 
         try {
             $request = $this->getHttpClient()->takeFormData(true)->post($url, $params);
-            var_dump($request->getData(true));
+            var_dump($request->getBody());
 
             if ($request->getCode() === 200) {
                 return $request->getData(true);
