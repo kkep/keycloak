@@ -225,14 +225,12 @@ class KeycloakWeb
             'code' => $code,
             'client_id' => $this->getClientId(),
             'grant_type' => 'authorization_code',
-            'redirect_uri' => 'https://b.lkds.alabuga.ru/',
+            'redirect_uri' => $this->callbackUrl,
         ];
 
         if (!empty($this->clientSecret)) {
             $params['client_secret'] = $this->clientSecret;
         }
-
-        var_dump($params, $url);
 
         try {
             $request = $this->getHttpClient()->takeFormData(true)->post($url, $params);
