@@ -84,7 +84,10 @@ class KeycloakWebGuard
         // Provide User
         $user = $this->provider->retrieveByCredentials($user);
 
-        var_dump($user);
+        if (empty($user)) {
+            echo "Вам ограничен доступ к этому сайту";
+            exit();
+        }
 
         $this->user->Authorize($user["ID"], true);
 
