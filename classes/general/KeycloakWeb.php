@@ -748,6 +748,7 @@ class KeycloakWeb
     public static function redirectToLogin()
     {
         $url = static::instance()->getLoginUrl();
+        var_dump($url);
         static::instance()->saveState();
 
         header("Location: $url");
