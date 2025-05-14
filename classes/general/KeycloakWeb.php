@@ -597,16 +597,12 @@ class KeycloakWeb
         $url = $this->baseUrl . '/realms/' . $this->realm;
         $url = $url . '/.well-known/openid-configuration';
 
-        var_dump($url);
-
         $configuration = [];
 
         try {
             $request = $this->getHttpClient()->get($url);
-
             if ($request->getCode() === 200) {
                 $configuration = $request->getData(true);
-                var_dump($configuration);
             }
         } catch (\Throwable $e) {
             $this->logException($e);
@@ -751,7 +747,6 @@ class KeycloakWeb
     public static function redirectToLogin()
     {
         $url = static::instance()->getLoginUrl();
-        var_dump($url);
         static::instance()->saveState();
 
         header("Location: $url");
