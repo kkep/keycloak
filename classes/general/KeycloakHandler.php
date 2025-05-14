@@ -64,8 +64,6 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
-        var_dump(CUser::GetByLogin('AGKhairullin')->Fetch());
-
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
