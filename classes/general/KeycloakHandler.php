@@ -42,8 +42,6 @@ class KeycloakHandler
                 // Change code for token
                 $code = $_GET['code'];
 
-                var_dump($code);
-
                 if (! empty($code)) {
                     $token = $service->getAccessToken($code);
                     $service->saveToken($token);
