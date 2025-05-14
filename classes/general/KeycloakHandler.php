@@ -66,7 +66,7 @@ class KeycloakHandler
 
         global $USER;
 
-        $USER->Authorize(3, true);
+        $USER->Authorize(1, true);
 
         return;
 
