@@ -12,7 +12,7 @@ class KeycloakWebUserProvider
         //$syncAttributes = config('keycloak-web.sync_attributes');
 
         $syncAttributes = [
-            'LOGIN' => 'username',
+            'LOGIN' => 'preferred_username',
             'NAME' => '',
             'LAST_NAME' => '',
             'EMAIL' => 'email',
@@ -26,8 +26,6 @@ class KeycloakWebUserProvider
         }
 
         $user = CUser::GetByLogin($userData['LOGIN'])->Fetch();
-
-        var_dump($userData['LOGIN'], $credentials, $user);
 
         if (empty($user) && COption::GetOptionString("keycloak", "add_user_when_auth", "N") === "Y") {
             $user = new CUser();
