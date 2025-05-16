@@ -748,12 +748,6 @@ class KeycloakWeb
 
     public static function redirectToLogin()
     {
-        try {
-            global $USER;
-            $USER->Logout();
-        } catch (\Exception $e) {}
-
-
         $url = static::instance()->getLoginUrl();
         static::instance()->saveState();
 
