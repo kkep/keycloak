@@ -53,7 +53,7 @@ class KeycloakHandler
                     $service->saveToken($token);
                 }
             } else {
-                KeycloakWeb::redirectToLogin();
+                //KeycloakWeb::redirectToLogin();
             }
         } else {
             // TODO валидируем токен
