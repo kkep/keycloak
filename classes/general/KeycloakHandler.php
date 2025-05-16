@@ -87,7 +87,6 @@ class KeycloakHandler
             KeycloakWeb::instance()->forgetToken();
             session_unset();
             session_destroy();
-            $USER->Logout();
             header("Location: $logoutUrl");
             exit();
         }
