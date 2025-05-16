@@ -73,6 +73,7 @@ class KeycloakHandler
             var_dump(1234);
             return;
         } else {
+            var_dump(125645634);
             KeycloakWeb::redirectToLogin();
         }
     }
