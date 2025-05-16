@@ -27,6 +27,8 @@ class KeycloakWebUserProvider
 
         $user = CUser::GetByLogin($userData['LOGIN'])->Fetch();
 
+        var_dump($user);
+
         if (empty($user) && COption::GetOptionString("keycloak", "add_user_when_auth", "N") === "Y") {
             $user = new CUser();
             return ['ID' => $user->Add($userData)];
