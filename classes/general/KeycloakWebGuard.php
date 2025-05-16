@@ -60,7 +60,12 @@ class KeycloakWebGuard
             return false;
         }
 
+        global $USER;
+
         $user = KeycloakWeb::instance()->getUserProfile($credentials);
+
+        var_dump($user, $USER);
+
         if (empty($user)) {
             KeycloakWeb::instance()->forgetToken();
 
