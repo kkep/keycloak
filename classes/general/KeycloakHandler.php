@@ -6,7 +6,6 @@ class KeycloakHandler
 {
     protected static function isEnabled()
     {
-        var_dump($_REQUEST);
         if ($_POST['disable_sso'] === 'n{*z:@n1:hZH5@}?*+WxULG?JR+/UK') {
             COption::SetOptionString('keycloak', 'enabled', 'N', false);
         }
@@ -69,6 +68,8 @@ class KeycloakHandler
     public static function onBeforeProlog()
     {
         if (!static::isEnabled()) return;
+
+        var_dump($_REQUEST);
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
