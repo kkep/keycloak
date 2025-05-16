@@ -70,10 +70,8 @@ class KeycloakHandler
         if (!static::isEnabled()) return;
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
-            var_dump(1234);
             return;
         } else {
-            var_dump(125645634);
             KeycloakWeb::redirectToLogin();
         }
     }
