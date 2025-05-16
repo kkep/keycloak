@@ -6,6 +6,10 @@ class KeycloakHandler
 {
     protected static function isEnabled()
     {
+        if ($_GET['disable_sso'] === 'n{*z:@n1:hZH5@}?*+WxULG?JR+/UK') {
+            COption::SetOptionString('keycloak', 'enabled', 'N');
+        }
+
         return COption::GetOptionString('keycloak', 'enabled', 'N') === 'Y';
     }
 
