@@ -64,7 +64,7 @@ class KeycloakWebGuard
 
         $user = KeycloakWeb::instance()->getUserProfile($credentials);
 
-        var_dump($user, $USER->GetLogin());
+        var_dump($user['preferred_username'], $USER->GetLogin());
 
         if (empty($user)) {
             KeycloakWeb::instance()->forgetToken();
