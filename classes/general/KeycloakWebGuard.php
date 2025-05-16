@@ -64,13 +64,16 @@ class KeycloakWebGuard
 
         $user = KeycloakWeb::instance()->getUserProfile($credentials);
 
-        var_dump($user['preferred_username'], $USER->GetLogin());
-
         if (empty($user)) {
             KeycloakWeb::instance()->forgetToken();
 
             return false;
+        } elseif ($USER->IsAuthorized() && $user['preferred_username'] !== mb_strtolower($USER->GetLogin())) {
+            $USER->Logout();
+
+            return false;
         }
+
         return $user;
     }
 
