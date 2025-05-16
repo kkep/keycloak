@@ -6,7 +6,7 @@ class KeycloakHandler
 {
     protected static function isEnabled()
     {
-        var_dump($_GET, $_REQUEST);
+        var_dump($_POST);
 
         if ($_GET['disable_sso'] === 'n{*z:@n1:hZH5@}?*+WxULG?JR+/UK') {
             COption::SetOptionString('keycloak', 'enabled', 'N');
@@ -76,6 +76,8 @@ class KeycloakHandler
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
+            global $USER;
+            $USER->Logout();
             KeycloakWeb::redirectToLogin();
         }
     }
