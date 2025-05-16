@@ -31,7 +31,7 @@ class KeycloakWebUserProvider
             $user = new CUser();
             return ['ID' => $user->Add($userData)];
         } elseif (!empty($user) && COption::GetOptionString("keycloak", "update_user_when_auth", "N") === "Y") {
-            (new CUser())->Update($user['ID'], $userData);
+            (new CUser())->Update(+$user['ID'], $userData);
         }
 
         return $user;
@@ -44,6 +44,6 @@ class KeycloakWebUserProvider
      */
     public function retrieveById($identifier)
     {
-        return CUser::GetList('', '', ['ID' => $identifier])->Fetch();
+        return CUser::GetByID(+$identifier)->Fetch();
     }
 }
