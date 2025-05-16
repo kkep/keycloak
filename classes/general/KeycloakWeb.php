@@ -749,6 +749,7 @@ class KeycloakWeb
     public static function redirectToLogin()
     {
         session_unset();
+        session_destroy();
         $url = static::instance()->getLoginUrl();
         static::instance()->saveState();
 

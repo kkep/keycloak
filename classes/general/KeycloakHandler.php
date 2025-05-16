@@ -81,6 +81,8 @@ class KeycloakHandler
         if (!static::isEnabled()) return;
 
         if ($arParams['SUCCESS']) {
+            session_unset();
+            session_destroy();
             $logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
             KeycloakWeb::instance()->forgetToken();
             header("Location: $logoutUrl");
