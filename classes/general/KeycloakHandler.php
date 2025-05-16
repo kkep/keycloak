@@ -75,8 +75,6 @@ class KeycloakHandler
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
-            global $USER;
-            $USER->Logout();
             KeycloakWeb::redirectToLogin();
         }
     }
