@@ -70,8 +70,6 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
-        KeycloakWebGuard::instance()->authenticate();
-
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
