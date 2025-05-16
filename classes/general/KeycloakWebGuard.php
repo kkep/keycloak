@@ -69,6 +69,8 @@ class KeycloakWebGuard
 
             return false;
         } elseif ($USER->IsAuthorized() && $user['preferred_username'] !== mb_strtolower($USER->GetLogin())) {
+            var_dump(1234);
+
             $USER->Logout();
 
             return false;
