@@ -96,7 +96,7 @@ class KeycloakWebGuard
             exit();
         }
 
-        $this->user->Authorize(+$user["ID"], true);
+        $this->user->Authorize(+$user["ID"], false);
 
         return true;
     }
