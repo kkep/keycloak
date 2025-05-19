@@ -69,6 +69,10 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
+        global $USER;
+
+        var_dump($USER->GetLogin());
+
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
