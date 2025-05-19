@@ -81,9 +81,9 @@ class KeycloakHandler
         if (!static::isEnabled()) return;
 
         if ($arParams['SUCCESS']) {
-            //$logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
+            $logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
             KeycloakWeb::instance()->forgetToken();
-            //header("Location: $logoutUrl");
+            header("Location: $logoutUrl");
             //exit();
             return true;
         }
