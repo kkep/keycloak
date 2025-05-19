@@ -85,6 +85,7 @@ class KeycloakHandler
             //echo '<script>window.location.replace(' . "'$logoutUrl'" . ');</script>';
             KeycloakWeb::instance()->backendLogout();
             KeycloakWeb::instance()->forgetToken();
+            var_dump($_SERVER);
             LocalRedirect('/auth/?logout=yes');
             //header("Location: $logoutUrl");
             //exit();
