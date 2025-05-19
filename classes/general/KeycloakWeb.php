@@ -201,7 +201,7 @@ class KeycloakWeb
 
     public function backendLogout()
     {
-
+        return $this->getHttpClient()->get($this->getLogoutUrl())->getCode();
     }
 
     /**
