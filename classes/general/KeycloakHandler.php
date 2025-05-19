@@ -82,7 +82,7 @@ class KeycloakHandler
 
         if ($arParams['SUCCESS']) {
             $logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
-            echo '<script type="text/javascript" language="Javascript">window.open(' . "'$logoutUrl'" . ');</script>';
+            echo '<script>window.location.replace(' . "'$logoutUrl'" . ');</script>';
             KeycloakWeb::instance()->forgetToken();
             //header("Location: $logoutUrl");
             //exit();
