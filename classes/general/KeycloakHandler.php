@@ -75,6 +75,8 @@ class KeycloakHandler
 
         //var_dump($payload['preferred_username'], $USER->GetLogin());
 
+        \Bitrix\Main\Composite\Engine::onUserLogout();
+
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
