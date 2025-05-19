@@ -71,6 +71,8 @@ class KeycloakHandler
 
         $credentials = KeycloakWeb::instance()->retrieveToken();
 
+        print_r($credentials);
+
         var_dump($credentials);
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
