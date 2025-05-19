@@ -69,11 +69,7 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
-        $credentials = KeycloakWeb::instance()->retrieveToken();
-
-        print_r(KeycloakWeb::instance()->getPayload());
-
-        var_dump($credentials);
+        var_dump(KeycloakWeb::instance()->getPayload());
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
