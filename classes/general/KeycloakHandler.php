@@ -67,6 +67,11 @@ class KeycloakHandler
 
     public static function onBeforeProlog()
     {
+        global $USER;
+        if ($USER?->GetLogin() === 'agkhairullin2') {
+            LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
+        }
+
         if (!static::isEnabled()) return;
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
