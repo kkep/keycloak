@@ -441,7 +441,7 @@ class KeycloakWeb
     public function getPayload()
     {
         $payload = explode('.', $this->retrieveToken()['access_token'])[2];
-        return base64_decode($payload);
+        return $payload;
     }
 
     /**
