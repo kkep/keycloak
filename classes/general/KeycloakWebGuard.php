@@ -69,7 +69,7 @@ class KeycloakWebGuard
 
             return false;
         } elseif ($USER->IsAuthorized() && mb_strtolower($user['preferred_username']) !== mb_strtolower($USER->GetLogin())) {
-            \Bitrix\Main\UserAuthActionTable::addLogoutAction($_REQUEST["ID"]);
+            \Bitrix\Main\UserAuthActionTable::addLogoutAction($USER->GetID());
             return false;
         }
 
