@@ -440,7 +440,7 @@ class KeycloakWeb
 
     public function getPayload()
     {
-        $payload = explode('.', $this->retrieveToken()['access_token'])[2];
+        $payload = explode('.', $this->retrieveToken()['access_token'])[1];
         return $payload;
     }
 
