@@ -199,6 +199,11 @@ class KeycloakWeb
         return $this->buildUrl($url, $params);
     }
 
+    public function backendLogout()
+    {
+
+    }
+
     /**
      * Return the register URL
      *

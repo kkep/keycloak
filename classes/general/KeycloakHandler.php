@@ -84,7 +84,7 @@ class KeycloakHandler
             $logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
             //echo '<script>window.location.replace(' . "'$logoutUrl'" . ');</script>';
             KeycloakWeb::instance()->forgetToken();
-            LocalRedirect($_SERVER['SCRIPT_URI'].'?logout=yes');
+            LocalRedirect('/auth/?logout=yes');
             //header("Location: $logoutUrl");
             //exit();
             return true;
