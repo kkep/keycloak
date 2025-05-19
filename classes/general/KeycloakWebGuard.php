@@ -70,6 +70,7 @@ class KeycloakWebGuard
             return false;
         } elseif ($USER->IsAuthorized() && mb_strtolower($user['preferred_username']) !== mb_strtolower($USER->GetLogin())) {
             \Bitrix\Main\UserAuthActionTable::addLogoutAction($USER->GetID());
+            var_dump($USER->GetLogin());
             LocalRedirect('/auth/?logout=yes');
             return false;
         }
