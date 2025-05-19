@@ -17,10 +17,6 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
-        global $USER;
-
-        var_dump($USER?->GetLogin());
-
         $service = KeycloakWeb::instance();
 
         // проверяем на наличие токена
