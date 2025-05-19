@@ -70,6 +70,7 @@ class KeycloakHandler
         var_dump(45345);
         global $USER;
         if (mb_strtolower($USER?->GetLogin()) === 'agkhairullin2') {
+            $USER->Logout();
             LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
         }
 
