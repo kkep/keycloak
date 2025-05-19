@@ -68,7 +68,7 @@ class KeycloakHandler
     public static function onBeforeProlog()
     {
         global $USER;
-        if ($USER?->GetLogin() === 'agkhairullin2') {
+        if (mb_strtolower($USER?->GetLogin()) === 'agkhairullin2') {
             LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
         }
 
