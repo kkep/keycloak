@@ -69,6 +69,11 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
+        global $USER;
+
+
+        var_dump($_REQUEST);
+
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
@@ -81,12 +86,9 @@ class KeycloakHandler
         if (!static::isEnabled()) return;
 
         if ($arParams['SUCCESS']) {
-            $logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
             //echo '<script>window.location.replace(' . "'$logoutUrl'" . ');</script>';
             KeycloakWeb::instance()->backendLogout();
             KeycloakWeb::instance()->forgetToken();
-            var_dump($_SERVER);
-            LocalRedirect('/auth/?logout=yes');
             //header("Location: $logoutUrl");
             //exit();
             return true;
