@@ -68,7 +68,7 @@ class KeycloakWebGuard
             KeycloakWeb::instance()->forgetToken();
 
             return false;
-        } elseif ($USER->IsAuthorized() && $user['preferred_username'] !== mb_strtolower($USER->GetLogin())) {
+        } elseif ($USER->IsAuthorized() && mb_strtolower($user['preferred_username']) !== mb_strtolower($USER->GetLogin())) {
             $USER->Logout();
             return false;
         }
