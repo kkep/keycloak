@@ -19,7 +19,7 @@ class KeycloakHandler
 
         global $USER;
 
-        var_dump($USER->GetLogin());
+        var_dump($USER?->GetLogin());
 
         $service = KeycloakWeb::instance();
 
