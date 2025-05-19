@@ -71,7 +71,7 @@ class KeycloakHandler
 
         global $USER;
 
-        var_dump($USER->GetLogin());
+        var_dump($USER->Logout());
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
