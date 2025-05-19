@@ -69,6 +69,9 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
+        global $USER;
+        $USER->Logout();
+
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
@@ -81,12 +84,8 @@ class KeycloakHandler
         if (!static::isEnabled()) return;
 
         if ($arParams['SUCCESS']) {
-            global $USER;
-
             $logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
             KeycloakWeb::instance()->forgetToken();
-            session_unset();
-            session_destroy();
             header("Location: $logoutUrl");
             exit();
         }
