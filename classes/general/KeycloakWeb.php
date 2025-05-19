@@ -438,6 +438,12 @@ class KeycloakWeb
         return $this->session->get(self::KEYCLOAK_SESSION);
     }
 
+    public function getPayload()
+    {
+        $payload = explode('.', $this->retrieveToken())[2];
+        return base64_decode($payload);
+    }
+
     /**
      * Save Token to Session
      *

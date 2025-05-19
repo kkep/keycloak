@@ -71,7 +71,7 @@ class KeycloakHandler
 
         $credentials = KeycloakWeb::instance()->retrieveToken();
 
-        print_r($credentials);
+        print_r(KeycloakWeb::instance()->getPayload());
 
         var_dump($credentials);
 
