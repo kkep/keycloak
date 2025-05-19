@@ -67,7 +67,7 @@ class KeycloakHandler
 
     public static function onBeforeProlog()
     {
-        //var_dump(45345);
+        var_dump(45345);
         global $USER;
         if (mb_strtolower($USER?->GetLogin()) === 'agkhairullin2') {
             LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
@@ -89,7 +89,7 @@ class KeycloakHandler
         if (!static::isEnabled()) return;
 
         if ($arParams['SUCCESS']) {
-            // var_dump(1234);
+            var_dump(1234);
             //echo '<script>window.location.replace(' . "'$logoutUrl'" . ');</script>';
             KeycloakWeb::instance()->backendLogout();
             KeycloakWeb::instance()->forgetToken();
