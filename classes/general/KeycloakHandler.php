@@ -17,6 +17,10 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
+        global $USER;
+
+        var_dump($_REQUEST);
+
         $service = KeycloakWeb::instance();
 
         // проверяем на наличие токена
@@ -68,11 +72,6 @@ class KeycloakHandler
     public static function onBeforeProlog()
     {
         if (!static::isEnabled()) return;
-
-        global $USER;
-
-
-        var_dump($_REQUEST);
 
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
