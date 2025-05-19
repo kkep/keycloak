@@ -91,7 +91,5 @@ class KeycloakHandler
 
     public static function onBeforeUserLogout()
     {
-        global $USER;
-        $USER->Logout();
     }
 }
