@@ -69,9 +69,6 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
-        global $USER;
-        $USER->Logout();
-
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
@@ -93,5 +90,7 @@ class KeycloakHandler
 
     public static function onBeforeUserLogout()
     {
+        global $USER;
+        $USER->Logout();
     }
 }
