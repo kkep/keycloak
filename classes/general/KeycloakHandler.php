@@ -81,9 +81,9 @@ class KeycloakHandler
         if (!static::isEnabled()) return;
 
         if ($arParams['SUCCESS']) {
-            echo '<script type="text/javascript" language="Javascript">window.open(\'http://www.example.com\');</script>';
-            //$logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
-            //KeycloakWeb::instance()->forgetToken();
+            $logoutUrl = KeycloakWeb::instance()->getLogoutUrl();
+            echo '<script type="text/javascript" language="Javascript">window.open(' . "'$logoutUrl'" . ');</script>';
+            KeycloakWeb::instance()->forgetToken();
             //header("Location: $logoutUrl");
             //exit();
             return true;
