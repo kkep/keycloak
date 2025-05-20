@@ -69,14 +69,6 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
-        //$payload = KeycloakWeb::instance()->getPayload();
-
-        //global $USER;
-
-        //var_dump($payload['preferred_username'], $USER->GetLogin());
-
-        //\Bitrix\Main\Composite\Engine::onUserLogout();
-
         if (KeycloakWebGuard::instance()->check() || KeycloakWebGuard::instance()->authenticate()) {
             return;
         } else {
@@ -86,29 +78,20 @@ class KeycloakHandler
 
     public static function onAfterUserLogout($arParams)
     {
-        if (!static::isEnabled()) return;
+        if (!static::isEnabled()) return true;
 
         if ($arParams['SUCCESS']) {
-            //var_dump(1234);
-            //echo '<script>window.location.replace(' . "'$logoutUrl'" . ');</script>';
             KeycloakWeb::instance()->backendLogout();
             KeycloakWeb::instance()->forgetToken();
-            $_SESSION = [];
-            session_destroy();
-            //LocalRedirect($_SERVER['SCRIPT_URI'].'?logout=yes');
+            //$_SESSION = [];
+            //session_destroy();
             LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
-            //header("Location: $logoutUrl");
-            //exit();
             return true;
         }
     }
 
     public static function onBeforeUserLogout()
     {
-        //\Bitrix\Main\Composite\Engine::onUserLogout();
-        //$_SESSION = [];
-        //session_destroy();
-
         return true;
     }
 }
