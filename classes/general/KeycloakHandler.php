@@ -105,9 +105,9 @@ class KeycloakHandler
 
     public static function onBeforeUserLogout()
     {
-        \Bitrix\Main\Composite\Engine::onUserLogout();
-        $_SESSION = [];
-        session_destroy();
+        //\Bitrix\Main\Composite\Engine::onUserLogout();
+        //$_SESSION = [];
+        //session_destroy();
 
         return true;
     }
