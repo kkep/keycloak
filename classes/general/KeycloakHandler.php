@@ -69,8 +69,6 @@ class KeycloakHandler
     {
         if (!static::isEnabled()) return;
 
-        var_dump($_SESSION);
-
         //$payload = KeycloakWeb::instance()->getPayload();
 
         //global $USER;
