@@ -106,5 +106,7 @@ class KeycloakHandler
         \Bitrix\Main\Composite\Engine::onUserLogout();
         $_SESSION = [];
         session_destroy();
+
+        return true;
     }
 }
