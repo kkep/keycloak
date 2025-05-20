@@ -96,7 +96,7 @@ class KeycloakHandler
             $_SESSION = [];
             session_destroy();
             //LocalRedirect($_SERVER['SCRIPT_URI'].'?logout=yes');
-            //LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
+            LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
             //header("Location: $logoutUrl");
             //exit();
             return true;
