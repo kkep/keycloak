@@ -103,9 +103,6 @@ class KeycloakHandler
 
     public static function onBeforeUserLogout()
     {
-        global $USER;
-
         \Bitrix\Main\Composite\Engine::onUserLogout();
-        \Bitrix\Main\UserAuthActionTable::addLogoutAction($USER->GetID());
     }
 }
