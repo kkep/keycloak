@@ -93,6 +93,8 @@ class KeycloakHandler
             //echo '<script>window.location.replace(' . "'$logoutUrl'" . ');</script>';
             KeycloakWeb::instance()->backendLogout();
             KeycloakWeb::instance()->forgetToken();
+            $_SESSION = [];
+            session_destroy();
             //LocalRedirect($_SERVER['SCRIPT_URI'].'?logout=yes');
             //LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
             //header("Location: $logoutUrl");
