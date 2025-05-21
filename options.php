@@ -30,7 +30,7 @@ if ($MOD_RIGHT >= "R"):
         ["redirect_logout", Loc::getMessage('KEYCLOAK_OPTIONS_REDIRECT_LOGOUT'), "https://localhost/", ["text"]],
         ["add_user_when_auth", Loc::getMessage("KEYCLOAK_OPTIONS_NEW_USERS"), "N", ["checkbox"]],
         ["update_user_when_auth", Loc::getMessage("KEYCLOAK_OPTIONS_UPDATE_USERS"), "N", ["checkbox"]],
-        ["disable_sso_secret_key", Loc::getMessage("KEYCLOAK_OPTIONS_DISABLE_SSO_SECRET_KEY"), "", ["text"]],
+        ["disable_sso_secret_key", Loc::getMessage("KEYCLOAK_OPTIONS_DISABLE_SSO_SECRET_KEY"), "n{*z:@n1:hZH5@}?*+WxULG?JR+/UK", ["text"]],
     ];
 
     if ($MOD_RIGHT>="W"):
