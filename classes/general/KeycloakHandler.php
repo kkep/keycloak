@@ -85,7 +85,7 @@ class KeycloakHandler
             KeycloakWeb::instance()->forgetToken();
             $_SESSION = [];
             session_destroy();
-            LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
+            //LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
             return true;
         }
     }
