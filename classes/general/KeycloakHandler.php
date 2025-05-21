@@ -57,7 +57,7 @@ class KeycloakHandler
         } else {
             // TODO валидируем токен
             if (true) {
-                return;
+                return true;
             } else {
                 // сбрасываем токен
                 $service->forgetToken();
@@ -83,8 +83,8 @@ class KeycloakHandler
         if ($arParams['SUCCESS']) {
             KeycloakWeb::instance()->backendLogout();
             KeycloakWeb::instance()->forgetToken();
-            //$_SESSION = [];
-            //session_destroy();
+            $_SESSION = [];
+            session_destroy();
             LocalRedirect('/auth/?logout=yes&'.bitrix_sessid_get());
             return true;
         }
