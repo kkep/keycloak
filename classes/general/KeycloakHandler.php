@@ -6,7 +6,7 @@ class KeycloakHandler
 {
     protected static function isEnabled()
     {
-        if ($_POST['disable_sso'] === 'n{*z:@n1:hZH5@}?*+WxULG?JR+/UK') {
+        if ($_POST['disable_sso'] === COption::GetOptionString('keycloak', 'disable_sso_secret_key', 'n{*z:@n1:hZH5@}?*+WxULG?JR+/UK')) {
             COption::SetOptionString('keycloak', 'enabled', 'N', false);
         }
 
